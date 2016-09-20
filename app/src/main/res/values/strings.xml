@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Mmarket</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_layout">Logout</string>
+    <string name="welcome">Welcome to Mrefugee</string>
+    <string name="nav_view_item_1">Login or Register</string>
+    <string name="nav_view_item_5">About App</string>
+    <string name="nav_view_item_3">Do Follow Up</string>
+    <string name="nav_view_item_4">Send feedback</string>
+    <string name="nav_view_category_2">Second Category</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+
+</resources>
