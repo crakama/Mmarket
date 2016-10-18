@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "369086352332",
+    "firebase_url": "https://mmarket-7f6a7.firebaseio.com",
+    "project_id": "mmarket-7f6a7",
+    "storage_bucket": "mmarket-7f6a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369086352332:android:be0d1e3eefff80e9",
+        "android_client_info": {
+          "package_name": "com.crakama.mmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369086352332-bhndkafv0vo5de639qke07sfsvtohglm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.crakama.mmarket",
+            "certificate_hash": "3BBC2979F6F0D01D7220CD5AB5338A2513DF5F62"
+          }
+        },
+        {
+          "client_id": "369086352332-usn5h4skq2lef2qe2a8k93o2lp52f1ta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL0IZGrF9TBO4U7FPwUmTanCvQxZEVKSE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

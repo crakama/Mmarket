@@ -30,13 +30,14 @@ public class RV_DataAdapter extends RecyclerView.Adapter<RV_DataAdapter.ViewHold
 
         holder.textView.setText(arrayList.get(i).getrecyclerViewTitleText());
         holder.imageView.setImageResource(arrayList.get(i).getrecyclerViewImage());
+
     }
 
     //Adapter displays/inflates the grid layout file with Images and titles
     @Override
     public RV_DataAdapter.ViewHolder onCreateViewHolder(ViewGroup vGroup, int i) {
 
-        View view = LayoutInflater.from(vGroup.getContext()).inflate(R.layout.products_grid_display, vGroup, false);
+        View view = LayoutInflater.from(vGroup.getContext()).inflate(R.layout.products_display, vGroup, false);
         return new ViewHolder(view);
     }
 

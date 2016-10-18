@@ -1,27 +1,73 @@
-package com.crakama.mmarket;
+package com.crakama.mmarket.Activities;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.crakama.mmarket.FirebaseModels.ProductModel;
+import com.crakama.mmarket.ProductData;
+import com.crakama.mmarket.R;
+import com.crakama.mmarket.RV_DataAdapter;
+import com.crakama.mmarket.RV_ItemClickListener;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+import static android.content.ContentValues.TAG;
+
 public class MainActivity extends AppCompatActivity {
+
+
+    // Set grid view items titles and images
+    DatabaseReference dbref;
+    FirebaseRecyclerAdapter<ProductModel,MainActivity.ProductModelVH> firebaseproductRecycleAdapter ;
+    RecyclerView rv_productDisplay;
+    LinearLayoutManager nwlinearLayoutManager;
+    ProgressBar newsprogressBar;
+
+
+
+
+    public static class ProductModelVH extends RecyclerView.ViewHolder{
+
+        public final TextView productName,productPrice;
+        View mView;
+
+        public ProductModelVH(View itemView) {
+            super(itemView);
+            this.mView = itemView;
+            this.productName = (TextView) mView.findViewById(R.id.producttext);
+            this.productPrice = (TextView) mView.findViewById(R.id.productprice);
+            //this.productDesc = (TextView) mView.findViewById(R.id.lv_repatriation_stages);
+            // this.newsDate = (TextView) mView.findViewById(R.id.lv_item_date);
+
+
+        }
+
+    }// End RepatriationRootFragModel class
 
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     NavigationView navigation;
 
+    public static final String PRODUCTS= "NewsModel";
     private final String recyclerViewTitleText[] = {"Fresh fruits", "Cerials",
             "Leather Bags", "Art and Jewelery", "Heavy Duty Duvet", "Fruits per Kgs", "Books for Kids",
             "Friuts in Large Scale", "Metal Equipments", "Fresh Fish Tilapia", "Peanut Butter", "Sandals"
@@ -54,8 +100,43 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        rv_productDisplay =(RecyclerView) findViewById(R.id.rv_product_display);
+
+
+        nwlinearLayoutManager = new LinearLayoutManager(this);
+        nwlinearLayoutManager.setStackFromEnd(true);
+
+        dbref = FirebaseDatabase.getInstance().getReference();
+        //newsprogressBar = (ProgressBar) findViewById(R.id.newsprogress_bar);
+        //newsprogressBar.setVisibility(View.VISIBLE);
+
+        firebaseproductRecycleAdapter = new FirebaseRecyclerAdapter<ProductModel, ProductModelVH>(
+                ProductModel.class,
+                R.layout.products_display,
+                ProductModelVH.class,
+                dbref.child(PRODUCTS)) {
+
+            @Override
+            protected void populateViewHolder(ProductModelVH viewHolder, final ProductModel model, final int position) {
+                viewHolder.productName.setText(model.getProductText());
+                //viewHolder.productPrice.setText(model.getProductImg());
+                viewHolder.productPrice.setText(model.getProductPrice());
+                //viewHolder.newsDate.setText(DateUtils.getRelativeTimeSpanString((long) model.getTimestamp()));
+                newsprogressBar.setVisibility(View.GONE);
+                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.w(TAG, "You clicked on " + position);
+                        //firebasenewsRecycleAdapter.getRef(position).removeValue();
+                        //openNewsDetailActivity(model.getNewsHead(), model.getNewsBody(), model.getNewsorganization());
+                    }
+                });
+            }};
+
+
         initRecyclerViews();
         initInstances();
+
     }
 
 
@@ -75,14 +156,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 switch (id) {
-                    case R.id.navigation_item_1:
+                    case R.id.nv_item_login :
                         //Do some thing here
                         break;
-                    case R.id.navigation_item_2:
+                    case R.id.nv_item_sellItem:
+                        Intent sellItemIntent = new Intent( MainActivity.this,UploadImage.class);
+                        startActivity(sellItemIntent);
                         break;
-                    case R.id.navigation_item_3:
-                        break;
-                    case R.id.navigation_item_4:
+                    case R.id.nv_item_aboutApp:
+
                         break;
                 }
                 return false;
@@ -90,16 +172,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-
     private void initRecyclerViews() {
 
         /** Inflate link the recycler view layout file with code
          * Set properties such as size and display format */
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_product_display);
         mRecyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext() , 2);
+//        LinearLayoutManager mLayoutManager
+//                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         /**Populate adapter with product data   */

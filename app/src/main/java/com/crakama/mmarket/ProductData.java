@@ -9,6 +9,16 @@ public class ProductData {
     private String recyclerViewTitleText;
     private int recyclerViewImage;
 
+    public int getRecyclerViewPrice() {
+        return recyclerViewPrice;
+    }
+
+    public void setRecyclerViewPrice(int recyclerViewPrice) {
+        this.recyclerViewPrice = recyclerViewPrice;
+    }
+
+    private int recyclerViewPrice;
+
     public String getrecyclerViewTitleText() {
         return recyclerViewTitleText;
     }
