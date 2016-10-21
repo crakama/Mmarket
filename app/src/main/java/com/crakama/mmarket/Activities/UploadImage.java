@@ -13,9 +13,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.crakama.mmarket.FirebaseModels.DBOperationsHelper;
+import com.crakama.mmarket.FirebaseModels.ProductModel;
 import com.crakama.mmarket.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -25,12 +29,15 @@ import java.util.Date;
 
 public class UploadImage extends AppCompatActivity {
 
-    private Button mUploadImg;
+    private Button mUploadImg, sendProductDetails;
     private ImageView mImageView;
     private StorageReference storageReference;
+    DatabaseReference db;
+    DBOperationsHelper dbOperationsHelper;
     private ProgressDialog progressDialog;
-    EditText editTextPName;
-    String productname;
+    EditText editTextPName,editTextPprice;
+    String productname,productprice,productDownloadUrl;
+    //Uri productDownloadUrl;
     private static final int CAMERA_REQUEST_CODE = 1888;
 
     @Override
@@ -39,12 +46,61 @@ public class UploadImage extends AppCompatActivity {
         setContentView(R.layout.activity_upload_image);
         storageReference = FirebaseStorage.getInstance().getReference();
 
+        /** Button for adding and Uploading image*/
         mUploadImg = (Button) findViewById(R.id.btnUploadImg);
-        mImageView = (ImageView) findViewById(R.id.imgView);
-        editTextPName = (EditText) findViewById(R.id.editTextProductImage);
 
-        productname = editTextPName.getText().toString();
+
+        mImageView = (ImageView) findViewById(R.id.editTextProductImage);
+
+
+        editTextPName = (EditText) findViewById(R.id.editTextProductName);
+        editTextPprice = (EditText) findViewById(R.id.editTextProductPrice);
+
+        sendProductDetails = (Button) findViewById(R.id.btnAddProductDetails);
+        sendProductDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /** Get product details */
+                productname = editTextPName.getText().toString();
+                productprice = editTextPprice.getText().toString();
+
+
+                /*** Set Data    */
+                ProductModel productModel = new ProductModel();
+                productModel.setProductText(productname);
+                productModel.setProductPrice(productprice);
+                productModel.setProductUrl(productDownloadUrl);
+
+
+                db = FirebaseDatabase.getInstance().getReference();
+                dbOperationsHelper = new DBOperationsHelper(db);
+                //Picasso.with(UploadImage.this).load(productDownloadUrl).into(mImageView);
+                if(productname != null && productname.length() > 0 && productDownloadUrl!= null ){
+                    /**
+                     * THEN SAVE
+                     */
+                    if(dbOperationsHelper.saveProductDetails(productModel)){
+                        /**
+                         * IF NEWS SAVED, CLEAR EDIT TEXT
+                         */
+                        editTextPName.setText("");
+                        editTextPprice.setText("");
+                        Toast.makeText(UploadImage.this, "YOUR PRODUCT DATA HAS BEEN SAVED!!!", Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(UploadImage.this, "productDownloadUrl OR NAME MUST NOT BE EMPTY", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+        });
+
+
+
         progressDialog = new ProgressDialog(this);
+
+
+        /** Capture Image save and pass it to an intent   */
         mUploadImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,27 +112,6 @@ public class UploadImage extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode == CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-//            //Bitmap photo = (Bitmap) data.getExtras().get("data");
-//            //mImageView.setImageBitmap(photo);
-//            Uri uri = data.getData();
-//            StorageReference  filepath = storageReference.child("Photos").child(uri.getLastPathSegment());
-//            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    Toast.makeText(UploadImage.this, "SUCCESS", Toast.LENGTH_LONG).show();
-//                }
-//            });
-//
-//
-//        }
-//
-//
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -117,6 +152,7 @@ public class UploadImage extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                     // handle success
+                    productDownloadUrl = taskSnapshot.getDownloadUrl().toString();
                      progressDialog.dismiss();
                     }
             } );}

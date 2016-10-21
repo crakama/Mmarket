@@ -1,5 +1,7 @@
 package com.crakama.mmarket.FirebaseModels;
 
+import com.squareup.picasso.RequestCreator;
+
 /**
  * Created by User on 10/18/2016.
  */
@@ -7,17 +9,17 @@ package com.crakama.mmarket.FirebaseModels;
 public class ProductModel {
 
     private String productText;
-    private String productImg;
     private String productPrice;
 
-    public String getProductImg() {
-        return productImg;
+    public String getProductUrl() {
+        return productUrl;
     }
 
-    public void setProductImg(String productImg) {
-        this.productImg = productImg;
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
     }
 
+    private String productUrl;
 
 
     public String getProductText() {

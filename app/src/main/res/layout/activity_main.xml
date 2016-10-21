@@ -29,6 +29,14 @@ tools:context="com.crakama.mmarket.Activities.MainActivity">
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
 
+
+        <ProgressBar
+            android:id="@+id/productprogress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+             />
+
     </android.support.design.widget.CoordinatorLayout>
 
 <!--<android.support.design.widget.CoordinatorLayout-->

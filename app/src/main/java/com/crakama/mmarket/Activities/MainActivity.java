@@ -1,5 +1,6 @@
 package com.crakama.mmarket.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,10 +15,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crakama.mmarket.FirebaseModels.PicassoClient;
 import com.crakama.mmarket.FirebaseModels.ProductModel;
 import com.crakama.mmarket.ProductData;
 import com.crakama.mmarket.R;
@@ -26,6 +29,7 @@ import com.crakama.mmarket.RV_ItemClickListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public static class ProductModelVH extends RecyclerView.ViewHolder{
 
         public final TextView productName,productPrice;
+        public final ImageView productImg;
         View mView;
 
         public ProductModelVH(View itemView) {
@@ -54,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             this.mView = itemView;
             this.productName = (TextView) mView.findViewById(R.id.producttext);
             this.productPrice = (TextView) mView.findViewById(R.id.productprice);
+            this.productImg = (ImageView) mView.findViewById(R.id.productimage);
             //this.productDesc = (TextView) mView.findViewById(R.id.lv_repatriation_stages);
             // this.newsDate = (TextView) mView.findViewById(R.id.lv_item_date);
 
@@ -66,34 +72,10 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     NavigationView navigation;
+    Context context;
 
-    public static final String PRODUCTS= "NewsModel";
-    private final String recyclerViewTitleText[] = {"Fresh fruits", "Cerials",
-            "Leather Bags", "Art and Jewelery", "Heavy Duty Duvet", "Fruits per Kgs", "Books for Kids",
-            "Friuts in Large Scale", "Metal Equipments", "Fresh Fish Tilapia", "Peanut Butter", "Sandals"
-    };
+    public static final String PRODUCTS= "ProductModel";
 
-    private final int recyclerViewImages[] = {
-            R.drawable.fruits, R.drawable.cerials, R.drawable.bagsretail, R.drawable.art,
-            R.drawable.duvets, R.drawable.fruitskilos, R.drawable.books,
-            R.drawable.fruitsretail, R.drawable.metals, R.drawable.fish,
-            R.drawable.peanutbutter, R.drawable.sandals };
-
-
-    private ArrayList<ProductData> prepareData() {
-
-        ArrayList<ProductData> av = new ArrayList<>();
-        //Loop through all product titles defined in string array e.g fruits,arts metals
-        for (int i = 0; i < recyclerViewTitleText.length; i++) {
-            /** create an instance of the class */
-            ProductData productdata = new ProductData();
-            /** Telling ProductData class instance where to get product Image and titles  */
-            productdata.setrecyclerViewTitleText(recyclerViewTitleText[i]);
-            productdata.setrecyclerViewImage(recyclerViewImages[i]);
-            av.add(productdata);
-        }
-        return av;
-    }
 
 
     @Override
@@ -103,35 +85,15 @@ public class MainActivity extends AppCompatActivity {
         rv_productDisplay =(RecyclerView) findViewById(R.id.rv_product_display);
 
 
+
         nwlinearLayoutManager = new LinearLayoutManager(this);
         nwlinearLayoutManager.setStackFromEnd(true);
 
         dbref = FirebaseDatabase.getInstance().getReference();
-        //newsprogressBar = (ProgressBar) findViewById(R.id.newsprogress_bar);
-        //newsprogressBar.setVisibility(View.VISIBLE);
+        newsprogressBar = (ProgressBar) findViewById(R.id.productprogress_bar);
+        newsprogressBar.setVisibility(View.VISIBLE);
 
-        firebaseproductRecycleAdapter = new FirebaseRecyclerAdapter<ProductModel, ProductModelVH>(
-                ProductModel.class,
-                R.layout.products_display,
-                ProductModelVH.class,
-                dbref.child(PRODUCTS)) {
 
-            @Override
-            protected void populateViewHolder(ProductModelVH viewHolder, final ProductModel model, final int position) {
-                viewHolder.productName.setText(model.getProductText());
-                //viewHolder.productPrice.setText(model.getProductImg());
-                viewHolder.productPrice.setText(model.getProductPrice());
-                //viewHolder.newsDate.setText(DateUtils.getRelativeTimeSpanString((long) model.getTimestamp()));
-                newsprogressBar.setVisibility(View.GONE);
-                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Log.w(TAG, "You clicked on " + position);
-                        //firebasenewsRecycleAdapter.getRef(position).removeValue();
-                        //openNewsDetailActivity(model.getNewsHead(), model.getNewsBody(), model.getNewsorganization());
-                    }
-                });
-            }};
 
 
         initRecyclerViews();
@@ -177,45 +139,73 @@ public class MainActivity extends AppCompatActivity {
         /** Inflate link the recycler view layout file with code
          * Set properties such as size and display format */
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_product_display);
-        mRecyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext() , 2);
+       // mRecyclerView.setHasFixedSize(true);
+        nwlinearLayoutManager = new LinearLayoutManager(MainActivity.this);
+        nwlinearLayoutManager.setStackFromEnd(false);
+       // RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext() , 2);
 //        LinearLayoutManager mLayoutManager
 //                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setLayoutManager(nwlinearLayoutManager);
 
         /**Populate adapter with product data   */
-        ArrayList<ProductData> av = prepareData();
-        RV_DataAdapter mAdapter = new RV_DataAdapter(getApplicationContext(), av);
-        mRecyclerView.setAdapter(mAdapter);
+        firebaseproductRecycleAdapter = new FirebaseRecyclerAdapter<ProductModel, ProductModelVH>(
+                ProductModel.class,
+                R.layout.products_display,
+                ProductModelVH.class,
+                dbref.child(PRODUCTS)) {
 
-    mRecyclerView.addOnItemTouchListener(
-            new RV_ItemClickListener(getApplicationContext(), new RV_ItemClickListener.OnItemClickListener() {
-        @Override
-        public void onItemClick(View view, int i) {
-            switch (i) {
-                case 0:
-                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
-                    break;
-                case 1:
-                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
-                    break;
-                case 2:
-                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
-                    break;
-                case 3:
-                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
-                    break;
-                case 4:
-                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
-                    break;
-                case 5:
-                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
-                    break;
+            @Override
+            protected void populateViewHolder(ProductModelVH viewHolder, final ProductModel model, final int position) {
+                viewHolder.productName.setText(model.getProductText());
 
-            }
-        }
-    })
-            );//Ends addOnItemTouchListener
+                PicassoClient.downloadProductImage(MainActivity.this,model.getProductUrl(),viewHolder.productImg);
+
+
+                // Picasso.with(MainActivity.this).load(model.getProductUrl()).into(viewHolder.productImg);
+                viewHolder.productPrice.setText(model.getProductPrice());
+                //viewHolder.newsDate.setText(DateUtils.getRelativeTimeSpanString((long) model.getTimestamp()));
+                newsprogressBar.setVisibility(View.GONE);
+                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.w(TAG, "You clicked on " + position);
+                        //firebasenewsRecycleAdapter.getRef(position).removeValue();
+                        //openNewsDetailActivity(model.getNewsHead(), model.getNewsBody(), model.getNewsorganization());
+                    }
+                });
+            }};
+
+        mRecyclerView.setLayoutManager(nwlinearLayoutManager);
+        mRecyclerView.setAdapter(firebaseproductRecycleAdapter);
+
+//    mRecyclerView.addOnItemTouchListener(
+//            new RV_ItemClickListener(getApplicationContext(), new RV_ItemClickListener.OnItemClickListener() {
+//        @Override
+//        public void onItemClick(View view, int i) {
+//            switch (i) {
+//                case 0:
+//                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
+//                    break;
+//                case 1:
+//                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
+//                    break;
+//                case 2:
+//                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
+//                    break;
+//                case 3:
+//                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
+//                    break;
+//                case 4:
+//                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
+//                    break;
+//                case 5:
+//                    Toast.makeText(view.getContext(), "position= " + i, Toast.LENGTH_LONG).show();
+//                    break;
+//
+//            }
+//        }
+//    })
+//            );//Ends addOnItemTouchListener
 
     }//Ends initRecycleViews method
 
