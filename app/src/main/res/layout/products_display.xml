@@ -8,8 +8,8 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
-        android:layout_margin="5dp"
-        card_view:cardElevation="5dp"
+        android:layout_margin="2dp"
+        card_view:cardElevation="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="2dp"
@@ -66,13 +66,19 @@
 
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
                 card_view:srcCompat="@mipmap/defaultplaceholder"
-                android:layout_alignBottom="@+id/productprice"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:id="@+id/productimage" />
+                android:cropToPadding="false"
+
+                android:id="@+id/productimage"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                 />
 
             <TextView
                 android:id="@+id/productpricetag"
