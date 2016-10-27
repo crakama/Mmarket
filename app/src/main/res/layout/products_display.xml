@@ -38,8 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date"
+                android:layout_toRightOf="@+id/productprice"
+                android:layout_below="@+id/productdetails"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_below="@+id/productprice"
                 android:layout_alignParentRight="true"/>
 
 
@@ -50,9 +51,45 @@
                 android:text="Location"
                 android:padding="10dp"
                 android:layout_toRightOf="@+id/productimage"
+                android:layout_below="@+id/productdetails"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                />
+
+
+            <TextView
+                android:id="@+id/productdetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="10dp"
+                android:layout_toRightOf="@+id/productimage"
                 android:layout_below="@+id/producttext"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 />
+            <TextView
+                android:id="@+id/productsellername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="10dp"
+                android:layout_toRightOf="@+id/productdetails"
+                android:layout_below="@+id/producttext"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                />
+
+
+
+            <TextView
+                android:id="@+id/productsellerno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="10dp"
+                android:layout_toRightOf="@+id/productsellername"
+                android:layout_below="@+id/producttext"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                />
+
             <TextView
                 android:id="@+id/productprice"
                 android:layout_width="wrap_content"
@@ -61,7 +98,7 @@
                 android:text="Price"
                 android:padding="10dp"
                 android:layout_below="@+id/productlocation"
-                android:layout_toRightOf="@+id/productpricetag"
+                android:layout_toRightOf="@+id/productlocation"
      />
 
 
@@ -72,7 +109,6 @@
                 card_view:srcCompat="@mipmap/defaultplaceholder"
                 android:layout_alignParentLeft="true"
                 android:cropToPadding="false"
-
                 android:id="@+id/productimage"
                 android:layout_marginLeft="0dp"
                 android:layout_marginRight="0dp"
@@ -86,10 +122,9 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Ksh."
-
-                android:layout_alignBaseline="@+id/productprice"
-                android:layout_alignBottom="@+id/productprice"
-                android:layout_toRightOf="@+id/productimage" />
+                android:padding="10dp"
+                android:layout_below="@+id/productlocation"
+                android:layout_toRightOf="@+id/productimage"/>
             <!--android:layout_marginTop="16dp"-->
 
         </RelativeLayout>

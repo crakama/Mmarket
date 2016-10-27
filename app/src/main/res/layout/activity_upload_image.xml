@@ -11,16 +11,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.crakama.mmarket.Activities.UploadImage">
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
-
-        <Button
-            android:id="@+id/btnUploadImg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="UPLOAD" />
 
         <ImageView
             android:id="@+id/editTextProductImage"
@@ -28,55 +26,120 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnUploadImg"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@color/common_google_signin_btn_text_dark_disabled" />
+            />
 
-
-        <Button
-            android:id="@+id/btnAddProductDetails"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="114dp"
-            android:text="Add"
-            android:textColor="@android:color/black" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
+            android:id="@+id/TPProductName"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btnAddProductDetails"
+            android:layout_below="@+id/editTextProductImage"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="100dp">
+            >
 
             <EditText
                 android:id="@+id/editTextProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:hint="Product Name"
+                android:layout_above="@+id/TPProductPrice"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
         </android.support.design.widget.TextInputLayout>
 
 
-
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/TPProductPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btnAddProductDetails"
-            >
+            android:layout_below="@+id/TPProductName">
 
             <EditText
                 android:id="@+id/editTextProductPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Product Price" />
 
-                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btnUploadImg"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:src="@drawable/photocamera"
+            android:text="UPLOAD"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/TPProductDetails"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TPProductPrice"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <EditText
+                android:id="@+id/editTextProductDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="5"
+                android:hint="Product Details"
+                 />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/TPProductSeller"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TPProductDetails"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <EditText
+                android:id="@+id/editTextProductseller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:minLines="5"
+                android:hint="Name of Seller" />
+
 
         </android.support.design.widget.TextInputLayout>
 
 
-    </RelativeLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/TPSellerNumber"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TPProductSeller"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <EditText
+                android:id="@+id/editTextsellernumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
 
+                android:hint="Seller Mobile Number" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnAddProductDetails"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:layout_below="@+id/TPSellerNumber"
+            android:textColor="@android:color/black" />
+
+
+    </RelativeLayout>
+</ScrollView>
 </android.support.design.widget.CoordinatorLayout>

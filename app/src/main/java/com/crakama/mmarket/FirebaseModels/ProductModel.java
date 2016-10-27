@@ -10,6 +10,37 @@ public class ProductModel {
 
     private String productText;
     private String productPrice;
+    private String productDetails;
+
+    public String getProductSellerName() {
+        return productSellerName;
+    }
+
+    public void setProductSellerName(String productSellerName) {
+        this.productSellerName = productSellerName;
+    }
+
+    private String productSellerName;
+
+    public String getProductSellerNo() {
+        return productSellerNo;
+    }
+
+    public void setProductSellerNo(String productSellerNo) {
+        this.productSellerNo = productSellerNo;
+    }
+
+    private String productSellerNo;
+
+    public String getProductDetails() {
+        return productDetails;
+    }
+
+    public void setProductDetails(String productDetails) {
+        this.productDetails = productDetails;
+    }
+
+
 
     public String getProductUrl() {
         return productUrl;

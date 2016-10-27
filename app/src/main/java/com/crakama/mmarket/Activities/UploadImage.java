@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,14 +30,15 @@ import java.util.Date;
 
 public class UploadImage extends AppCompatActivity {
 
-    private Button mUploadImg, sendProductDetails;
+    private Button sendProductDetails;
+    private ImageButton mUploadImg;
     private ImageView mImageView;
     private StorageReference storageReference;
     DatabaseReference db;
     DBOperationsHelper dbOperationsHelper;
     private ProgressDialog progressDialog;
-    EditText editTextPName,editTextPprice;
-    String productname,productprice,productDownloadUrl;
+    EditText editTextPName,editTextPprice,editTextPSeller,editTextSellerNo,editTextPDesc;
+    String productname,productprice,productDownloadUrl,productsdetails,productsellername,productsellernumber;
     //Uri productDownloadUrl;
     private static final int CAMERA_REQUEST_CODE = 1888;
 
@@ -44,32 +46,40 @@ public class UploadImage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
+
         storageReference = FirebaseStorage.getInstance().getReference();
 
         /** Button for adding and Uploading image*/
-        mUploadImg = (Button) findViewById(R.id.btnUploadImg);
-
-
+        mUploadImg = (ImageButton) findViewById(R.id.btnUploadImg);
         mImageView = (ImageView) findViewById(R.id.editTextProductImage);
-
 
         editTextPName = (EditText) findViewById(R.id.editTextProductName);
         editTextPprice = (EditText) findViewById(R.id.editTextProductPrice);
+        editTextPSeller = (EditText) findViewById(R.id.editTextProductseller);
+        editTextSellerNo = (EditText) findViewById(R.id.editTextsellernumber);
+        editTextPDesc = (EditText) findViewById(R.id.editTextProductDetails);
 
         sendProductDetails = (Button) findViewById(R.id.btnAddProductDetails);
+
+
         sendProductDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /** Get product details */
                 productname = editTextPName.getText().toString();
                 productprice = editTextPprice.getText().toString();
-
+                productsdetails = editTextPDesc.getText().toString();
+                productsellername = editTextPSeller.getText().toString();
+                productsellernumber = editTextSellerNo.getText().toString();
 
                 /*** Set Data    */
                 ProductModel productModel = new ProductModel();
                 productModel.setProductText(productname);
                 productModel.setProductPrice(productprice);
                 productModel.setProductUrl(productDownloadUrl);
+                productModel.setProductDetails(productsdetails);
+                productModel.setProductSellerName(productsellername);
+                productModel.setProductSellerNo(productsellernumber);
 
 
                 db = FirebaseDatabase.getInstance().getReference();
