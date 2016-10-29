@@ -6,25 +6,44 @@
         android:text="Product Description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txdProductDesc"
-
-
-        />
+        android:padding="10dp"
+        android:minLines="10"
+        android:background="@color/colorPrimaryWhiteDark"
+        android:id="@+id/txdProductDesc" />
 
     <TextView
         android:text="Seller Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txdProductDesc"
+        android:background="@color/colorPrimaryWhiteDark"
         android:id="@+id/tvdSellerName"
-
-       />
+        android:padding="10dp" />
 
     <TextView
         android:text="Seller Mobile NO."
         android:layout_width="match_parent"
+        android:background="@color/colorPrimaryWhiteDark"
         android:layout_height="wrap_content"
         android:id="@+id/tvdSellerNo"
-        android:layout_below="@+id/tvdSellerName"
-         />
+        android:padding="10dp"
+        android:layout_below="@+id/tvdSellerName" />
+    <TextView
+        android:text="Make Order"
+        android:layout_width="wrap_content"
+        android:background="@color/colorPrimaryWhiteDark"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvdmakeorder"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:text="Contact Seller."
+        android:layout_width="wrap_content"
+        android:background="@color/colorPrimaryWhiteDark"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvdContactSeller"
+        android:padding="10dp"
+        android:layout_toRightOf="@+id/tvdmakeorder"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

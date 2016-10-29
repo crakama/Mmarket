@@ -27,7 +27,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.UploadImage" />
-        <activity android:name=".Activities.ProductDetails" />
+
+        <activity android:name=".Activities.ProductDetails"
+            android:theme="@style/TransparentTheme" />
+
+
+
         <activity android:name=".Activities.MakeOrder"></activity>
     </application>
 

@@ -1,18 +1,26 @@
 package com.crakama.mmarket.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.crakama.mmarket.FirebaseModels.PicassoClient;
 import com.crakama.mmarket.R;
 
-public class ProductDetails extends AppCompatActivity {
+public class ProductDetails extends Activity {
 
     TextView txtPname, txtPprice, txtPDesc,txtSeller,txtSellerNo;
+    ImageView imgPimage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // supportRequestWindowFeature(AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY);
+
         setContentView(R.layout.activity_product_details);
 
 
@@ -21,6 +29,7 @@ public class ProductDetails extends AppCompatActivity {
         txtPDesc = (TextView) findViewById(R.id.txdProductDesc);
         txtSeller = (TextView) findViewById(R.id.tvdSellerName);
         txtSellerNo = (TextView) findViewById(R.id.tvdSellerNo);
+        imgPimage = (ImageView)findViewById(R.id.imgProductImage);
         /*
         *GET INTENT
         */
@@ -34,16 +43,19 @@ public class ProductDetails extends AppCompatActivity {
         String price = newsIntent.getExtras().getString("PRICE_KEY");
         String sellername = newsIntent.getExtras().getString("SELLER_KEY");
         String sellerno = newsIntent.getExtras().getString("MOBILE_KEY");
-
+        String image = newsIntent.getExtras().getString("IMG_URL_KEY");
 
         /*
         * BIND DATA
         */
+
         txtPname.setText(name);
-        txtPprice.setText(desc);
-        txtPDesc.setText(sellername);
+        txtPprice.setText(price);
+        txtPDesc.setText(desc);
         txtSellerNo.setText(sellerno);
-        txtSeller.setText(price);
+        txtSeller.setText(sellername);
+        PicassoClient.downloadProductImage(ProductDetails.this, image, imgPimage);
+        //imgPimage.setImageResource(  );
 
 
     }

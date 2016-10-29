@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.w(TAG, "You clicked on " + position);
                         //firebasenewsRecycleAdapter.getRef(position).removeValue();
                         openNewsDetailActivity(model.getProductText(), model.getProductPrice(),
-                                model.getProductDetails(), model.getProductSellerName(),model.getProductSellerNo());
+                                model.getProductDetails(), model.getProductSellerName(),model.getProductSellerNo(),model.getProductUrl());
 
 
                     }
@@ -179,10 +179,11 @@ public class MainActivity extends AppCompatActivity {
             private void openNewsDetailActivity(String...details) {
                 Intent newsIntent = new Intent(MainActivity.this, ProductDetails.class);
                 newsIntent.putExtra("NAME_KEY", details[0]);
-                newsIntent.putExtra("DESC_KEY", details[1]);
-                newsIntent.putExtra("PRICE_KEY", details[2]);
+                newsIntent.putExtra("DESC_KEY", details[2]);
+                newsIntent.putExtra("PRICE_KEY", details[1]);
                 newsIntent.putExtra("SELLER_KEY", details[3]);
                 newsIntent.putExtra("MOBILE_KEY", details[4]);
+                newsIntent.putExtra("IMG_URL_KEY", details[5]);
 
                 startActivity(newsIntent);
             }
