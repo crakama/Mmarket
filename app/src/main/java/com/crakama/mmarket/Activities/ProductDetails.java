@@ -28,7 +28,7 @@ public class ProductDetails extends Activity {
         txtPprice = (TextView) findViewById(R.id.tvdProductPrice);
         txtPDesc = (TextView) findViewById(R.id.txdProductDesc);
         txtSeller = (TextView) findViewById(R.id.tvdSellerName);
-        txtSellerNo = (TextView) findViewById(R.id.tvdSellerNo);
+        //txtSellerNo = (TextView) findViewById(R.id.tvdSellerNo);
         imgPimage = (ImageView)findViewById(R.id.imgProductImage);
         /*
         *GET INTENT
@@ -52,7 +52,7 @@ public class ProductDetails extends Activity {
         txtPname.setText(name);
         txtPprice.setText(price);
         txtPDesc.setText(desc);
-        txtSellerNo.setText(sellerno);
+       // txtSellerNo.setText(sellerno);
         txtSeller.setText(sellername);
         PicassoClient.downloadProductImage(ProductDetails.this, image, imgPimage);
         //imgPimage.setImageResource(  );

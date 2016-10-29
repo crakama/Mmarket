@@ -13,11 +13,12 @@
     <!--android:paddingTop="@dimen/activity_vertical_margin"-->
 
 
-    <include  android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+    <include
         layout="@layout/content_product_details" />
-
+    <!--<include  android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="center"-->
+        <!--layout="@layout/content_product_details" />-->
 
 
     <!--<TextView-->
@@ -41,7 +42,7 @@
         android:id="@+id/tvdProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
+
         android:padding="10dp"
         android:layout_below="@+id/tvdProductPrice"
         android:background="#99000000"
@@ -54,7 +55,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvdProductPrice"
-        android:gravity=""
         android:padding="10dp"
         android:layout_marginTop="128dp"
         android:background="#99000000"
