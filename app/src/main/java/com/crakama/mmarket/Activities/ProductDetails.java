@@ -2,6 +2,8 @@ package com.crakama.mmarket.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
@@ -12,18 +14,23 @@ import android.widget.TextView;
 import com.crakama.mmarket.FirebaseModels.PicassoClient;
 import com.crakama.mmarket.R;
 
-public class ProductDetails extends Activity {
+public class ProductDetails extends AppCompatActivity {
 
     TextView txtPname, txtPprice, txtPDesc,txtSeller,txtSellerNo;
     ImageView imgPimage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // supportRequestWindowFeature(AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY);
+       supportRequestWindowFeature(AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY);
 
         setContentView(R.layout.activity_product_details);
-
-
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00212121")) );
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#99000000")) );
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         txtPname = (TextView) findViewById(R.id.tvdProductName);
         txtPprice = (TextView) findViewById(R.id.tvdProductPrice);
         txtPDesc = (TextView) findViewById(R.id.txdProductDesc);

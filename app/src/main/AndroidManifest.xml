@@ -26,14 +26,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.UploadImage" />
+        <activity android:name=".Activities.UploadImage"
+            android:parentActivityName=".Activities.MainActivity"/>
 
         <activity android:name=".Activities.ProductDetails"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/TransparentTheme" />
 
 
 
-        <activity android:name=".Activities.MakeOrder"></activity>
+        <activity android:name=".Activities.MakeOrder"
+            android:parentActivityName=".Activities.MainActivity"></activity>
     </application>
 
 </manifest>
