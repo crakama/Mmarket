@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:scrollbars="vertical"
+        android:src="@drawable/art"
+        android:id="@+id/imgProductImage"/>
+
+    <TextView
+        android:id="@+id/tvdProductPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dip"
+        android:layout_alignParentBottom="true"
+        android:background="#AA000000"
+        android:textColor="#ffffffff"
+        android:text="Golden Gate" />
+
+    <TextView
+    android:id="@+id/tvdProductName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/tvdProductPrice"
+    android:background="#AA000000"
+    android:padding="10dip"
+        android:textColor="#ffffffff"
+    android:text="Product Name" />
+
+</RelativeLayout>
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:orientation="vertical"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:srcCompat="@drawable/art"-->
+            <!--android:id="@+id/imgProductImage"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:layout_gravity="center_horizontal|top"/>-->
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/tvdProductName"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+
+            <!--android:padding="10dp"-->
+            <!--android:layout_below="@+id/tvdProductPrice"-->
+            <!--android:background="#99000000"-->
+            <!--android:textColor="#ffffffff"-->
+            <!--android:text="Product Name"-->
+            <!--/>-->
+
+        <!--<TextView-->
+            <!--android:text="Product Price"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/tvdProductPrice"-->
+            <!--android:padding="10dp"-->
+            <!--android:background="#99000000"-->
+            <!--android:textColor="#ffffffff"/>-->
+
+
+
+
+<!--</LinearLayout>-->
