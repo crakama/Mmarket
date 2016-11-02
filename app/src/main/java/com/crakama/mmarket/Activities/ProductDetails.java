@@ -78,9 +78,9 @@ public class ProductDetails extends AppCompatActivity {
 
 
         // Get a handle to your EditTexts
-        EditText t1 = (EditText) findViewById(R.id.id4);
-        EditText t2 = (EditText) findViewById(R.id.id2);
-        EditText t3 = (EditText) findViewById(R.id.id3);
+     TextView t1 = (TextView) findViewById(R.id.txdProductDesc);
+     TextView t2 = (TextView) findViewById(R.id.tvdSellerName);
+     TextView t3 = (TextView) findViewById(R.id.tvdOrder);
 
         // Set height to 50% of screen size each
         t1.setHeight(productdescHeight);
@@ -89,8 +89,8 @@ public class ProductDetails extends AppCompatActivity {
 
         txtPname = (TextView) findViewById(R.id.tvdProductName);
         txtPprice = (TextView) findViewById(R.id.tvdProductPrice);
-        txtPDesc = (TextView) findViewById(R.id.txdProductDesc);
-        txtSeller = (TextView) findViewById(R.id.tvdSellerName);
+       // txtPDesc = (TextView) findViewById(R.id.txdProductDesc);
+        //txtSeller = (TextView) findViewById(R.id.tvdSellerName);
         //txtSellerNo = (TextView) findViewById(R.id.tvdSellerNo);
         imgPimage = (ImageView)findViewById(R.id.imgProductImage);
 
@@ -117,9 +117,11 @@ public class ProductDetails extends AppCompatActivity {
 
         txtPname.setText(name);
         txtPprice.setText(price);
-        txtPDesc.setText(desc);
+        //txtPDesc.setText(desc);
+        t1.setText(desc);
        // txtSellerNo.setText(sellerno);
-        txtSeller.setText(sellername);
+        //txtSeller.setText(sellername);
+        t2.setText(sellername);
         PicassoClient.downloadProductImage(ProductDetails.this, image, imgPimage);
         //imgPimage.setImageResource(  );
 

@@ -22,9 +22,7 @@
     <LinearLayout
         android:id="@+id/linsum"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent">
-
         <include
             layout="@layout/content" />
     </LinearLayout>
@@ -32,22 +30,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/id4"
+        <TextView
+            android:id="@+id/txdProductDesc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#DCDCDC"
             android:gravity="center"
             android:text="ONE ONE ONE"
             android:textIsSelectable="false"
             android:textSize="45sp" />
 
-        <EditText
-            android:id="@+id/id2"
+        <TextView
+            android:id="@+id/tvdSellerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#AAAAAA"
@@ -56,155 +53,60 @@
             android:textIsSelectable="false"
             android:textSize="45sp" />
 
-        <EditText
-            android:id="@+id/id3"
+        <TextView
+            android:id="@+id/tvdOrder"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#777777"
             android:gravity="center"
-            android:text="THREE THREE THREE"
+            android:text="make order"
             android:textIsSelectable="false"
             android:textSize="45sp" />
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:weightSum="100"-->
-            <!--android:orientation="vertical"-->
-            <!--&gt;-->
 
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="90"-->
-                <!--android:orientation="vertical"-->
-                <!--android:background="@color/colorPrimaryWhiteDark">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/txdProductDesc"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textColor="@color/colorPrimaryDark"-->
-                    <!--android:text="This is layout first with 50% width and height"-->
-                    <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
-            <!--</LinearLayout>-->
-
-
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="5"-->
-                <!--android:orientation="vertical"-->
-                <!--android:background="#0042fd">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/tvdSellerName"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="This is layout Second"-->
-                    <!--android:maxLines="1"-->
-                    <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                    <!--android:textColor="#fbfdfc" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="5"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:weightSum = "5"-->
-                <!--android:background="#00fd77">-->
-                <!--<TextView-->
-                    <!--android:id="@+id/tvdSeller"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:background="#00ffff"-->
-                    <!--android:layout_weight="5"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textColor="@color/colorPrimaryDark"-->
-                    <!--android:text="Make Order"-->
-                    <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
-            <!--</LinearLayout>-->
-
-
-        <!--</LinearLayout>-->
-  <!--</ScrollView>-->
         <!--<include-->
             <!--layout="@layout/content_product_details" />-->
 
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="90"
-            android:orientation="vertical"
-            android:background="@color/colorPrimaryWhiteDark">
-
-            <TextView
-                android:id="@+id/txdProductDesc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="This is layout first with 50% width and height"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:orientation="vertical"
-            android:background="#0042fd">
-
-            <TextView
-                android:id="@+id/tvdSellerName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="This is layout Second"
-                android:maxLines="1"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#fbfdfc" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:orientation="horizontal"
-            android:weightSum = "5"
-            android:background="#00fd77">
-            <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="fill_parent"-->
             <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="2.5"-->
-            <!--android:orientation="horizontal">-->
+
+            <!--android:orientation="vertical"-->
+            <!--android:background="@color/colorPrimaryWhiteDark">-->
+
             <!--<TextView-->
-            <!--android:id="@+id/tvdSellerNo"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textColor="@color/colorPrimaryDark"-->
-            <!--android:text="Make Order"-->
-            <!--android:background="#AAfd77"-->
-            <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
-
-            <!--</LinearLayout>-->
-
-            <TextView
-                android:id="@+id/tvdSeller"
-                android:layout_width="wrap_content"
-                android:background="#00ffff"
-                android:layout_weight="5"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Make Order"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                <!--android:id="@+id/txdProductDesc1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="This is layout first with 50% width and height"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
 
 
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/tvdSellerName1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="This is layout Second"-->
+                <!--android:maxLines="1"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+                <!--android:textColor="#fbfdfc" />-->
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/tvdOrder1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:background="#00ffff"-->
+
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--android:text="Make Order"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+        <!--</LinearLayout>-->
+
+
+
     </LinearLayout>
 </LinearLayout>
 
