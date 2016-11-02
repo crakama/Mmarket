@@ -2,6 +2,7 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     tools:context="com.crakama.mmarket.Activities.ProductDetails"
     android:id="@+id/scroller"
     android:layout_width="fill_parent"
@@ -10,15 +11,10 @@
 
 
 <LinearLayout
-
-
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical">
-
-
-
     <LinearLayout
         android:id="@+id/linsum"
         android:layout_width="match_parent"
@@ -39,9 +35,9 @@
             android:layout_height="match_parent"
             android:background="#DCDCDC"
             android:gravity="center"
-            android:text="ONE ONE ONE"
+            android:text="Product Details"
             android:textIsSelectable="false"
-            android:textSize="45sp" />
+            />
 
         <TextView
             android:id="@+id/tvdSellerName"
@@ -49,27 +45,93 @@
             android:layout_height="wrap_content"
             android:background="#AAAAAA"
             android:gravity="center"
-            android:text="TWO TWO TWO"
+            android:text="Seller Details"
             android:textIsSelectable="false"
-            android:textSize="45sp" />
+             />
 
-        <TextView
+        <Button
             android:id="@+id/tvdOrder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#777777"
             android:gravity="center"
+            android:onClick="makeProductOrder"
             android:text="make order"
             android:textIsSelectable="false"
-            android:textSize="45sp" />
-
+            />
 
         <!--<include-->
             <!--layout="@layout/content_product_details" />-->
 
 
+    <!--<RelativeLayout-->
+        <!--xmlns:fab="http://schemas.android.com/apk/res-auto"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/material_design_android_floating_action_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
 
+            fab:fab_colorNormal="@color/colorPrimary"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+            fab:fab_colorRipple="@color/colorAccent"
+
+            fab:menu_fab_label="Floating Action Menu"
+            fab:menu_fab_size="normal"
+            fab:menu_icon="@drawable/phonecall"
+            fab:menu_labels_colorNormal="#333"
+            fab:menu_labels_colorPressed="#444"
+            fab:menu_labels_colorRipple="#66efecec"
+            fab:menu_labels_cornerRadius="3dp"
+            fab:menu_labels_ellipsize="none"
+            fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+            fab:menu_labels_margin="0dp"
+            fab:menu_labels_maxLines="-1"
+            fab:menu_labels_padding="8dp"
+            fab:menu_labels_position="left"
+            fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+            fab:menu_labels_showShadow="true"
+            fab:menu_labels_singleLine="false"
+            fab:menu_labels_textColor="#f2f1f1"
+            fab:menu_labels_textSize="15sp"
+            fab:menu_openDirection="up"
+            fab:menu_shadowColor="#66aff198"
+            fab:menu_shadowRadius="4dp"
+            fab:menu_shadowXOffset="1dp"
+            fab:menu_shadowYOffset="4dp"
+            fab:menu_showShadow="true">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/material_design_floating_action_menu_item1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sms"
+                fab:fab_label="Menu Item 1"
+                fab:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/material_design_floating_action_menu_item2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cellphone"
+                fab:fab_label="Menu Item 2"
+                fab:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/material_design_floating_action_menu_item3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sms"
+                fab:fab_label="Menu Item 3"
+                fab:fab_size="mini" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+    <!--</RelativeLayout>-->
     </LinearLayout>
 </LinearLayout>
 

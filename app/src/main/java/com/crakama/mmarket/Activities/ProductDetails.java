@@ -9,17 +9,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.Display;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
 import com.crakama.mmarket.FirebaseModels.PicassoClient;
 import com.crakama.mmarket.R;
 
 public class ProductDetails extends AppCompatActivity {
+
+    FloatingActionMenu fam;
+    FloatingActionButton fab1, fab2, fab3;
 
     TextView txtPname, txtPprice, txtPDesc,txtSeller,txtSellerNo;
     ImageView imgPimage;
@@ -49,33 +55,16 @@ public class ProductDetails extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-
-        // Get a handle to your EditTexts
-        //LinearLayout t1 = (LinearLayout) findViewById(R.id.linsum);
-
-        // Set height to 50% of screen size each
-        //t1.setMinimumHeight(imageHeight);
-
-
-
         // Gets linearlayout
         LinearLayout layout = (LinearLayout)findViewById(R.id.linsum);
           // Gets the layout params that will allow you to resize the layout
         ViewGroup.LayoutParams params = layout.getLayoutParams();
-// Changes the height and width to the specified *pixels*
+
+        // Changes the height and width to the specified *pixels*
         params.height = imageHeight;
         //params.width = 100;
         layout.setLayoutParams(params);
 
-        // Get a handle to your EditTexts
-        //TextView productdetails = (TextView) findViewById(R.id.);
-        //TextView sellerdetails = (TextView) findViewById(R.id.);
-
-
-        // Set height to 50% of screen size each
-        //productdetails.setHeight(productdescHeight);
-        //sellerdetails.setHeight(sellerDetailsHeight);
-        //t3.setHeight(editTextHeight);
 
 
         // Get a handle to your EditTexts
@@ -120,12 +109,39 @@ public class ProductDetails extends AppCompatActivity {
         txtPprice.setText(price);
         //txtPDesc.setText(desc);
         t1.setText(desc);
-       // txtSellerNo.setText(sellerno);
+        // txtSellerNo.setText(sellerno);
         //txtSeller.setText(sellername);
         sellerDetails.setText(sellername);
         PicassoClient.downloadProductImage(ProductDetails.this, image, imgPimage);
         //imgPimage.setImageResource(  );
 
+        fam = (FloatingActionMenu) findViewById(R.id.material_design_android_floating_action_menu);
+        fab1 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item1);
+        fab2 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item2);
+        fab3 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item3);
 
+        fab1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //TODO something when floating action menu first item clicked
+
+            }
+        });
+        fab2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //TODO something when floating action menu second item clicked
+
+            }
+        });
+        fab3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //TODO something when floating action menu third item clicked
+
+            }
+        });
+    }
+
+    public void makeProductOrder(View view) {
+        Intent makeorderIntent = new Intent(ProductDetails.this, MakeOrder.class);
+        startActivity(makeorderIntent);
     }
 }
