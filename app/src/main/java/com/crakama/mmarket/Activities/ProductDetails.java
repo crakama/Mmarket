@@ -38,7 +38,8 @@ public class ProductDetails extends AppCompatActivity {
         // Note: this is absolute height, does not take into consideration window decoration!
         int imageHeight = (screensize.y * 3) / 4;
         int sellerDetailsHeight = screensize.y / 4;
-        int productdescHeight = screensize.y / 2;
+        int productdescHeight = (screensize.y * 3)/ 4;
+        int makeorder = screensize.y/8;
 
         //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00212121")) );
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#99000000")) );
@@ -79,13 +80,13 @@ public class ProductDetails extends AppCompatActivity {
 
         // Get a handle to your EditTexts
      TextView t1 = (TextView) findViewById(R.id.txdProductDesc);
-     TextView t2 = (TextView) findViewById(R.id.tvdSellerName);
+     TextView sellerDetails = (TextView) findViewById(R.id.tvdSellerName);
      TextView t3 = (TextView) findViewById(R.id.tvdOrder);
 
         // Set height to 50% of screen size each
         t1.setHeight(productdescHeight);
-        t2.setHeight(productdescHeight);
-        t3.setHeight(productdescHeight);
+        sellerDetails.setHeight(sellerDetailsHeight);
+        t3.setHeight(makeorder);
 
         txtPname = (TextView) findViewById(R.id.tvdProductName);
         txtPprice = (TextView) findViewById(R.id.tvdProductPrice);
@@ -121,7 +122,7 @@ public class ProductDetails extends AppCompatActivity {
         t1.setText(desc);
        // txtSellerNo.setText(sellerno);
         //txtSeller.setText(sellername);
-        t2.setText(sellername);
+        sellerDetails.setText(sellername);
         PicassoClient.downloadProductImage(ProductDetails.this, image, imgPimage);
         //imgPimage.setImageResource(  );
 
