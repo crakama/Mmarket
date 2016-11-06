@@ -160,7 +160,7 @@ public class UploadImage extends AppCompatActivity {
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                    // taskSnapshot.getMetadata() contains file metadata such as size, content_product_image-type, and download URL.
                     // handle success
                     productDownloadUrl = taskSnapshot.getDownloadUrl().toString();
                      progressDialog.dismiss();

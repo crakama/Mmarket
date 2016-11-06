@@ -7,7 +7,7 @@
     <color name="colorTransparent">#99000000</color>
     <color name="colorPrimaryWhiteDark">#EEEEEE</color>
     <color name="colorPrimaryTransparent">#00212121</color>
-
+    <color name="colorFAB">#2196F3</color>
 
 
 </resources>

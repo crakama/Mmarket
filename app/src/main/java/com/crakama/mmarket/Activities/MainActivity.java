@@ -8,7 +8,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,20 +17,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.crakama.mmarket.FirebaseModels.PicassoClient;
 import com.crakama.mmarket.FirebaseModels.ProductModel;
-import com.crakama.mmarket.ProductData;
 import com.crakama.mmarket.R;
-import com.crakama.mmarket.RV_DataAdapter;
-import com.crakama.mmarket.RV_ItemClickListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
