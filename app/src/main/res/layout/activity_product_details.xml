@@ -13,26 +13,31 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
         android:layout_height="wrap_content">
         <android.support.design.widget.CollapsingToolbarLayout
-
+            android:id="@+id/coltoolbar"
+            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:contentScrim="@color/colorFAB"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
             <!--<include-->
                 <!--layout="@layout/content_product_image" />-->
             <RelativeLayout
+                android:fitsSystemWindows="true"
                 android:layout_width="wrap_content"
                 android:id="@+id/linsum"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:scrollbars="vertical"
+                    android:fitsSystemWindows="true"
+                    app:layout_collapseMode="parallax"
                     android:src="@drawable/art"
                     android:id="@+id/imgProductImage"/>
 
@@ -40,9 +45,9 @@
                     android:id="@+id/tvdProductPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12dip"
+                    android:padding="10dip"
                     android:layout_alignParentBottom="true"
-                    android:background="#AA000000"
+                    android:background="@color/colorTransparent"
                     android:textColor="#ffffffff"
                     android:text="Golden Gate" />
 
@@ -51,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/tvdProductPrice"
-                    android:background="#AA000000"
+                    android:background="@color/colorTransparent"
                     android:padding="10dip"
                     android:textColor="#ffffffff"
                     android:text="Product Name" />

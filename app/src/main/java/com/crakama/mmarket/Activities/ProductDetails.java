@@ -1,12 +1,15 @@
 package com.crakama.mmarket.Activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
@@ -64,13 +67,22 @@ public class ProductDetails extends AppCompatActivity {
 
     TextView txtPname, txtPprice, txtPDesc,txtSeller,txtSellerNo;
     ImageView imgPimage;
+    Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY);
+        //supportRequestWindowFeature(AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_product_details);
 
 
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.coltoolbar);
+        collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(context,R.color.colorFAB));
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0DFFFFFF")) );
 
         // Get display size -- API L13 and up. Otherwise use getResources().getDisplayMetrics();
         Display display = getWindowManager().getDefaultDisplay();
@@ -257,12 +269,7 @@ public class ProductDetails extends AppCompatActivity {
 //
 //            }
 //        });
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#99000000")) );
-        // add back arrow to toolbar
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
+       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#99000000")) );
 
 
 
