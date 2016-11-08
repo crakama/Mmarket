@@ -16,6 +16,8 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +73,7 @@ public class ProductDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //supportRequestWindowFeature(AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY);
+        supportRequestWindowFeature(AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_product_details);
 
 
@@ -147,7 +149,7 @@ public class ProductDetails extends AppCompatActivity {
         String desc = newsIntent.getExtras().getString("DESC_KEY");
         String price = newsIntent.getExtras().getString("PRICE_KEY");
         String sellername = newsIntent.getExtras().getString("SELLER_KEY");
-        String sellerno = newsIntent.getExtras().getString("MOBILE_KEY");
+        final String sellerno = newsIntent.getExtras().getString("MOBILE_KEY");
         String image = newsIntent.getExtras().getString("IMG_URL_KEY");
 
         /*
@@ -200,7 +202,13 @@ public class ProductDetails extends AppCompatActivity {
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplication(), "Floating Action Button 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplication(), "Floating Action Button 1", Toast.LENGTH_SHORT).show();
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setType("text/plain");
+                String shareBodyText = sellerno;
+
+                callIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
+                startActivity(callIntent);
             }
         });
 
@@ -336,5 +344,56 @@ public class ProductDetails extends AppCompatActivity {
     public void makeProductOrder(View view) {
         Intent makeorderIntent = new Intent(ProductDetails.this, MakeOrder.class);
         startActivity(makeorderIntent);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        //Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.product_details_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.action_share) {
+//            Intent shareIntent = new Intent(MainActivity.this, UpdateNews.class);
+//            startActivity(addcampIntent);
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBodyText = "Check it out this product";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject here");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
+            startActivity(Intent.createChooser(sharingIntent, "Shearing Option"));
+            return true;
+        }else if(id == R.id.home){
+            onBackPressed();
+            return true;
+
+        } else if (id == R.id.action_order) {
+
+            Intent callIntent = new Intent(ProductDetails.this, MakeOrder.class);
+            startActivity(callIntent);
+//            Intent callIntent = new Intent(Intent.ACTION_DIAL);
+//            startActivity(callIntent);
+            return true;
+        }
+//        }else if (id == R.id.action_share) {
+//
+//            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+//            sharingIntent.setType("text/plain");
+//            String shareBodyText = "Check it out this product";
+//            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject here");
+//            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
+//            startActivity(Intent.createChooser(sharingIntent, "Shearing Option"));
+//            return true;
+//        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

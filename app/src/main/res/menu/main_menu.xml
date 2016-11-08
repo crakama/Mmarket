@@ -7,4 +7,16 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_account"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="Account"
+        app:showAsAction="never" >
+    </item>
+    <item
+        android:id="@+id/action_sale"
+        android:icon="@mipmap/ic_sale"
+        android:title="Sale"
+        app:showAsAction="always" >
+    </item>
 </menu>

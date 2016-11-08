@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 switch (id) {
-                    case R.id.nv_item_login :
-                        //Do some thing here
-                        break;
+//                    case R.id.nv_item_login :
+//                        //Do some thing here
+//                        break;
                     case R.id.nv_item_sellItem:
                         Intent sellItemIntent = new Intent( MainActivity.this,UploadImage.class);
                         startActivity(sellItemIntent);
@@ -204,6 +204,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void onOrderAction(MenuItem mi) {
+        // handle click here
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -220,16 +223,39 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        /**   int id = item.getItemId();
+
+         //noinspection SimplifiableIfStatement
+         if (id == R.id.action_settings) {
+         return true;
+         }
+         return super.onOptionsItemSelected(item);*/
+
+        // Handle presses on the action bar items
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_account) {
+//            Intent shareIntent = new Intent(MainActivity.this, UpdateNews.class);
+//            startActivity(addcampIntent);
+            return true;
+        } else if (id == R.id.home) {
+            onBackPressed();
+            return true;
+
+        } else if (id == R.id.action_sale) {
+            Intent sellItemIntent = new Intent(MainActivity.this, UploadImage.class);
+            startActivity(sellItemIntent);
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
 
     }
-
-
 
 }

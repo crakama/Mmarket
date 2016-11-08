@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="all">
-        <item
-            android:id="@+id/nv_item_login"
-            android:checked="true"
-            android:icon="@drawable/ic_launcher"
-            android:title="@string/nv_login" />
+        <!--<item-->
+            <!--android:id="@+id/nv_item_login"-->
+            <!--android:checked="true"-->
+            <!--android:icon="@drawable/ic_launcher"-->
+            <!--android:title="@string/nv_login" />-->
     </group>
 
     <item
