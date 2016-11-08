@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -204,10 +205,11 @@ public class ProductDetails extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(getApplication(), "Floating Action Button 1", Toast.LENGTH_SHORT).show();
                 Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setType("text/plain");
-                String shareBodyText = sellerno;
+               // callIntent.setType("text/plain");
+                callIntent.setData(Uri.parse("tel:" + sellerno));
+                //String shareBodyText = sellerno;
 
-                callIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
+                //callIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
                 startActivity(callIntent);
             }
         });
