@@ -41,7 +41,8 @@
         <activity
             android:name=".Activities.MakeOrder"
             android:parentActivityName=".Activities.MainActivity" />
-        <activity android:name=".Activities.LoginActivity"></activity>
+        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.SignUpActivity"></activity>
     </application>
 
 </manifest>

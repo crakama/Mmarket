@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.crakama.mmarket.LoginActivity">
+    tools:context="com.crakama.mmarket.Activities.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -28,7 +28,8 @@
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -44,6 +45,9 @@
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="35dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -62,6 +66,9 @@
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="35dp" />
 
             <Button
                 android:id="@+id/email_sign_in_button"
@@ -71,6 +78,35 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
+
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="10dp" />
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/button_facebook_login"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textStyle="bold" />
+            <!-- Link to Login Screen -->
+
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onSignUpClicked"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="New User? Please Sign Up"
+                android:textStyle="bold"
+                android:layout_marginTop="20dip"
+                android:background="@null"
+                android:textAllCaps="false"
+                android:textSize="15dp" />
+
+
 
         </LinearLayout>
     </ScrollView>
