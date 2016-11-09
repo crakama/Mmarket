@@ -15,8 +15,11 @@
     </item>
     <item
         android:id="@+id/action_sale"
-        android:icon="@mipmap/ic_sale"
+        android:icon="@drawable/salegoods"
         android:title="Sale"
         app:showAsAction="always" >
     </item>
+    <item android:id="@+id/action_logout" android:title="@string/action_logout"/>
+
+
 </menu>

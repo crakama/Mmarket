@@ -48,8 +48,8 @@ public class ProductDetails extends AppCompatActivity {
     //FloatingActionMenu fam;
     //FloatingActionButton fab1, fab2, fab3;
     FloatingActionButton fab;
-    FloatingActionButton fab1;
-    FloatingActionButton fab2;
+    FloatingActionButton fabcall;
+    FloatingActionButton fabsms;
     FloatingActionButton fab3;
     CoordinatorLayout rootLayout;
 
@@ -171,8 +171,8 @@ public class ProductDetails extends AppCompatActivity {
 
         //Floating Action Buttons
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab1 = (FloatingActionButton) findViewById(R.id.fab_1);
-        fab2 = (FloatingActionButton) findViewById(R.id.fab_2);
+        fabcall = (FloatingActionButton) findViewById(R.id.fab_call);
+        fabsms = (FloatingActionButton) findViewById(R.id.fab_sms);
         fab3 = (FloatingActionButton) findViewById(R.id.fab_3);
 
         //Animations
@@ -200,7 +200,7 @@ public class ProductDetails extends AppCompatActivity {
             }
         });
 
-        fab1.setOnClickListener(new View.OnClickListener() {
+        fabcall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getApplication(), "Floating Action Button 1", Toast.LENGTH_SHORT).show();
@@ -214,7 +214,7 @@ public class ProductDetails extends AppCompatActivity {
             }
         });
 
-        fab2.setOnClickListener(new View.OnClickListener() {
+        fabsms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplication(), "Floating Action Button 2", Toast.LENGTH_SHORT).show();
@@ -235,10 +235,7 @@ public class ProductDetails extends AppCompatActivity {
             list.add(new Object());
         }
 
-//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-//        Recycler_View_Adapter adapter = new Recycler_View_Adapter(list, getApplication());
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         final LinearLayout linearLayout =(LinearLayout) findViewById(R.id.linearparent);
         linearLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -291,20 +288,20 @@ public class ProductDetails extends AppCompatActivity {
     private void expandFAB() {
 
         //Floating Action Button 1
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
-        layoutParams.rightMargin += (int) (fab1.getWidth() * 1.7);
-        layoutParams.bottomMargin += (int) (fab1.getHeight() * 0.25);
-        fab1.setLayoutParams(layoutParams);
-        fab1.startAnimation(show_fab_1);
-        fab1.setClickable(true);
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fabcall.getLayoutParams();
+        layoutParams.rightMargin += (int) (fabcall.getWidth() * 1.7);
+        layoutParams.bottomMargin += (int) (fabcall.getHeight() * 0.25);
+        fabcall.setLayoutParams(layoutParams);
+        fabcall.startAnimation(show_fab_1);
+        fabcall.setClickable(true);
 
         //Floating Action Button 2
-        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fab2.getLayoutParams();
-        layoutParams2.rightMargin += (int) (fab2.getWidth() * 1.5);
-        layoutParams2.bottomMargin += (int) (fab2.getHeight() * 1.5);
-        fab2.setLayoutParams(layoutParams2);
-        fab2.startAnimation(show_fab_2);
-        fab2.setClickable(true);
+        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fabsms.getLayoutParams();
+        layoutParams2.rightMargin += (int) (fabsms.getWidth() * 1.5);
+        layoutParams2.bottomMargin += (int) (fabsms.getHeight() * 1.5);
+        fabsms.setLayoutParams(layoutParams2);
+        fabsms.startAnimation(show_fab_2);
+        fabsms.setClickable(true);
 
         //Floating Action Button 3
         FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) fab3.getLayoutParams();
@@ -319,20 +316,20 @@ public class ProductDetails extends AppCompatActivity {
     private void hideFAB() {
 
         //Floating Action Button 1
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
-        layoutParams.rightMargin -= (int) (fab1.getWidth() * 1.7);
-        layoutParams.bottomMargin -= (int) (fab1.getHeight() * 0.25);
-        fab1.setLayoutParams(layoutParams);
-        fab1.startAnimation(hide_fab_1);
-        fab1.setClickable(false);
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fabcall.getLayoutParams();
+        layoutParams.rightMargin -= (int) (fabcall.getWidth() * 1.7);
+        layoutParams.bottomMargin -= (int) (fabcall.getHeight() * 0.25);
+        fabcall.setLayoutParams(layoutParams);
+        fabcall.startAnimation(hide_fab_1);
+        fabcall.setClickable(false);
 
         //Floating Action Button 2
-        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fab2.getLayoutParams();
-        layoutParams2.rightMargin -= (int) (fab2.getWidth() * 1.5);
-        layoutParams2.bottomMargin -= (int) (fab2.getHeight() * 1.5);
-        fab2.setLayoutParams(layoutParams2);
-        fab2.startAnimation(hide_fab_2);
-        fab2.setClickable(false);
+        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fabsms.getLayoutParams();
+        layoutParams2.rightMargin -= (int) (fabsms.getWidth() * 1.5);
+        layoutParams2.bottomMargin -= (int) (fabsms.getHeight() * 1.5);
+        fabsms.setLayoutParams(layoutParams2);
+        fabsms.startAnimation(hide_fab_2);
+        fabsms.setClickable(false);
 
         //Floating Action Button 3
         FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) fab3.getLayoutParams();
@@ -364,8 +361,6 @@ public class ProductDetails extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_share) {
-//            Intent shareIntent = new Intent(MainActivity.this, UpdateNews.class);
-//            startActivity(addcampIntent);
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             String shareBodyText = "Check it out this product";
@@ -384,17 +379,16 @@ public class ProductDetails extends AppCompatActivity {
 //            Intent callIntent = new Intent(Intent.ACTION_DIAL);
 //            startActivity(callIntent);
             return true;
+        } else if (id == R.id.action_share) {
+
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBodyText = "Check it out this product";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject here");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
+            startActivity(Intent.createChooser(sharingIntent, "Shearing Option"));
+            return true;
         }
-//        }else if (id == R.id.action_share) {
-//
-//            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-//            sharingIntent.setType("text/plain");
-//            String shareBodyText = "Check it out this product";
-//            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject here");
-//            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
-//            startActivity(Intent.createChooser(sharingIntent, "Shearing Option"));
-//            return true;
-//        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -14,14 +14,16 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,17 +31,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.UploadImage"
-            android:parentActivityName=".Activities.MainActivity"/>
-
-        <activity android:name=".Activities.ProductDetails"
+        <activity
+            android:name=".Activities.UploadImage"
+            android:parentActivityName=".Activities.MainActivity" />
+        <activity
+            android:name=".Activities.ProductDetails"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/TransparentTheme" />
-
-
-
-        <activity android:name=".Activities.MakeOrder"
-            android:parentActivityName=".Activities.MainActivity"></activity>
+        <activity
+            android:name=".Activities.MakeOrder"
+            android:parentActivityName=".Activities.MainActivity" />
+        <activity android:name=".Activities.LoginActivity"></activity>
     </application>
 
 </manifest>

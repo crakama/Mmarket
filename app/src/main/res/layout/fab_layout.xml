@@ -5,23 +5,23 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_1"
+        android:id="@+id/fab_call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_menu_compass"
+        android:src="@drawable/ic_action_call"
         android:visibility="invisible"
         app:backgroundTint="@color/colorFAB"
         app:fabSize="mini" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_2"
+        android:id="@+id/fab_sms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_menu_myplaces"
+        android:src="@drawable/ic_action_sms"
         android:visibility="invisible"
         app:backgroundTint="@color/colorFAB"
         app:fabSize="mini" />
