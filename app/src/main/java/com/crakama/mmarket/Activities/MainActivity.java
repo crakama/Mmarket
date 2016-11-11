@@ -3,6 +3,9 @@ package com.crakama.mmarket.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -14,19 +17,32 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crakama.mmarket.FirebaseModels.PicassoClient;
 import com.crakama.mmarket.FirebaseModels.ProductModel;
 import com.crakama.mmarket.R;
+import com.facebook.AccessToken;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.utilities.Base64;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import static android.content.ContentValues.TAG;
 import com.facebook.FacebookSdk;
+import com.google.firebase.database.ValueEventListener;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -38,7 +54,15 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar productprogressBar;
 
 
-
+    private static final String TAG = "AndroidBash";
+   // private Firebase myFirebaseRef;
+    private FirebaseAuth mAuth;
+    private TextView name;
+    private TextView welcomeText;
+    private Button changeButton;
+    private Button revertButton;
+    // To hold Facebook profile picture
+    private ImageView profilePicture;
 
     public static class ProductModelVH extends RecyclerView.ViewHolder{
 
@@ -87,10 +111,47 @@ public class MainActivity extends AppCompatActivity {
         productprogressBar.setVisibility(View.VISIBLE);
 
 
-
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        //Creates a reference for  your Firebase database
+        //Add YOUR Firebase Reference URL instead of the following URL
+        //myFirebaseRef = new Firebase("https://androidbashfirebaseupdat-bd094.firebaseio.com/users/");
+        mAuth = FirebaseAuth.getInstance();
         initRecyclerViews();
         initInstances();
 
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //Get the uid for the currently logged in User from intent data passed to this activity
+
+//        if(AccessToken.getCurrentAccessToken() == null) {
+//
+//        }else {
+//        String uid = getIntent().getExtras().getString("user_id");
+//        //Get the imageUrl  for the currently logged in User from intent data passed to this activity
+//        String imageUrl = getIntent().getExtras().getString("profile_picture");
+//
+//        new ImageLoadTask(imageUrl, profilePicture).execute();
+//        //Referring to the name of the User who has logged in currently and adding a valueChangeListener
+//        dbref.child(uid).child("name").addValueEventListener(new ValueEventListener() {
+//            //onDataChange is called every time the name of the User changes in your Firebase Database
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                //Inside onDataChange we can get the data as an Object from the dataSnapshot
+//                //getValue returns an Object. We can specify the type by passing the type expected as a parameter
+//                String data = dataSnapshot.getValue(String.class);
+//                name.setText("Hello " + data + ", ");
+//            }
+//
+//            //onCancelled is called in case of any error
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Toast.makeText(getApplicationContext(), "" + databaseError.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        });
+//        }
     }
 
 
@@ -110,9 +171,17 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 switch (id) {
-//                    case R.id.nv_item_login :
-//                        //Do some thing here
-//                        break;
+                    case R.id.nv_item_login :
+                        //Do some thing here
+                        Intent loginIntent = new Intent( MainActivity.this,LoginActivity.class);
+                        startActivity(loginIntent);
+                        break;
+                    case R.id.nv_item_register :
+                        //Do some thing here
+                        Intent regIntent = new Intent( MainActivity.this,SignUpActivity.class);
+                        startActivity(regIntent);
+                        break;
+
                     case R.id.nv_item_sellItem:
                         Intent sellItemIntent = new Intent( MainActivity.this,UploadImage.class);
                         startActivity(sellItemIntent);
@@ -248,7 +317,12 @@ public class MainActivity extends AppCompatActivity {
             onBackPressed();
             return true;
 
-        } else if (id == R.id.action_sale) {
+        }else if (id == R.id.action_logout) {
+            mAuth.signOut();
+            finish();
+        }
+
+        else if (id == R.id.action_sale) {
             Intent sellItemIntent = new Intent(MainActivity.this, UploadImage.class);
             startActivity(sellItemIntent);
             return true;
@@ -257,5 +331,43 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
+
+
+    public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
+
+        private String url;
+        private ImageView imageView;
+
+        public ImageLoadTask(String url, ImageView imageView) {
+            this.url = url;
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(Void... params) {
+            try {
+                URL urlConnection = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) urlConnection
+                        .openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                Base64.InputStream input = (Base64.InputStream) connection.getInputStream();
+                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+                return myBitmap;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            super.onPostExecute(result);
+            imageView.setImageBitmap(result);
+        }
+
+    }
+
+
 
 }

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="all">
+    <!--<group android:checkableBehavior="all">-->
         <!--<item-->
             <!--android:id="@+id/nv_item_login"-->
             <!--android:checked="true"-->
             <!--android:icon="@drawable/ic_launcher"-->
             <!--android:title="@string/nv_login" />-->
 
-    </group>
+    <!--</group>-->
 
-    <item
-        android:id="@+id/nv_SecondaryCategory"
-        android:title="@string/nv_SecondCategory"    >
-        <menu>
-            <item
-                android:id="@+id/nv_item_sellItem"
-                android:icon="@drawable/ic_launcher"
-                android:title="@string/nv_sellItem" />
-            <item
-                android:id="@+id/nv_item_aboutApp"
-                android:icon="@drawable/ic_launcher"
-                android:title="@string/nv_aboutApp" />
+    <!--<item-->
+        <!--android:id="@+id/nv_SecondaryCategory"-->
+        <!--android:title="More Options"    >-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nv_item_sellItem"-->
+                <!--android:icon="@drawable/ic_launcher"-->
+                <!--android:title="@string/nv_sellItem" />-->
+            <!--<item-->
+                <!--android:id="@+id/nv_item_aboutApp"-->
+                <!--android:icon="@drawable/ic_launcher"-->
+                <!--android:title="@string/nv_aboutApp" />-->
 
-        </menu>
-    </item>
+        <!--</menu>-->
+    <!--</item>-->
 
 </menu>

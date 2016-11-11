@@ -9,7 +9,7 @@ import com.google.firebase.database.DatabaseReference;
 
 public class DBOperationsHelper {
 
-    Boolean savedproductDetails;
+    Boolean savedproductDetails,savedUserDetails;
     DatabaseReference dbref;
 
 
@@ -38,5 +38,23 @@ public class DBOperationsHelper {
             }
         }
         return savedproductDetails;
+    }
+
+
+
+    public Boolean saveUserDetails(UserModel userModel){
+        if(userModel == null){
+            savedUserDetails = false;
+        }else{
+            try {
+                dbref.child("UserModel").push().setValue(userModel);
+                savedUserDetails = true;
+            } catch (DatabaseException e) {
+
+                e.printStackTrace();
+                savedUserDetails = false;
+            }
+        }
+        return savedUserDetails;
     }
 }

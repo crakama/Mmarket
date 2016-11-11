@@ -27,3 +27,8 @@ Context ctx;
         }
     }
 }
+/* *************************************
+         *      FIREBASE EMAIL AUTHENTICATION  *
+         ***************************************/
+        /* Load the Facebook login button and set up the tracker to monitor access token changes */
+

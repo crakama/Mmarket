@@ -145,7 +145,7 @@
             <!--android:layout_height="wrap_content"-->
             <!--android:layout_gravity="bottom|end"-->
             <!--android:src="@android:drawable/ic_menu_help"-->
-            <!--app:layout_behavior="com.crakama.mmarket.FAB_Float_on_Scroll" />-->
+            <!--app:layout_behavior="com.crakama.mmarket.FLoatinfActionButtons.FAB_Float_on_Scroll" />-->
         <!---->
         <!--<include layout="@layout/fab_layout" />-->
     </LinearLayout>
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:src="@drawable/cellphone"
-        app:layout_behavior="com.crakama.mmarket.FAB_Float_on_Scroll" />
+        app:layout_behavior="com.crakama.mmarket.FloatingActionButtons.FAB_Float_on_Scroll" />
 
     <include layout="@layout/fab_layout" />
 
