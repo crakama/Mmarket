@@ -248,38 +248,6 @@ public class ProductDetails extends AppCompatActivity {
             }
         });
 
-
-
-
-        //imgPimage.setImageResource(  );
-
-//        fam = (FloatingActionMenu) findViewById(R.id.material_design_android_floating_action_menu);
-//        fab1 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item1);
-//        fab2 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item2);
-//        fab3 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item3);
-//
-//        fab1.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                //TODO something when floating action menu first item clicked
-//
-//            }
-//        });
-//        fab2.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                //TODO something when floating action menu second item clicked
-//
-//            }
-//        });
-//        fab3.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                //TODO something when floating action menu third item clicked
-//
-//            }
-//        });
-       // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#99000000")) );
-
-
-
     }
 
 

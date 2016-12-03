@@ -44,7 +44,7 @@
             android:parentActivityName=".Activities.MainActivity" />
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.SignUpActivity"
-            android:theme="@style/AppTheme.LoginActionbar">
+            android:theme="@style/AppTheme">
 
         </activity>
     </application>

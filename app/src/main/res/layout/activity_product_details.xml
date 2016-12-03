@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.crakama.mmarket.Activities.ProductDetails"
-    >
+    tools:context="com.crakama.mmarket.Activities.ProductDetails">
 
 
     <android.support.design.widget.AppBarLayout
@@ -22,7 +20,6 @@
             android:layout_height="match_parent"
             app:contentScrim="@color/colorFAB"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
 
             <!--<include-->
                 <!--layout="@layout/content_product_image" />-->
@@ -64,9 +61,6 @@
             </RelativeLayout>
 
 
-
-
-
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -78,28 +72,12 @@
 
 
 
-
-
-    <!--<ScrollView android:id="@+id/scroller"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="fill_parent"-->
-        <!--android:fillViewport="true">-->
-
-
-
 <LinearLayout
     android:id="@+id/linearparent"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical">
-    <!--<LinearLayout-->
-        <!--android:id="@+id/linsum"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-        <!--<include-->
-            <!--layout="@layout/content_product_image" />-->
-    <!--</LinearLayout>-->
 
 
     <LinearLayout
@@ -137,17 +115,7 @@
             android:text="make order"
             android:textIsSelectable="false"
             />
-        <!--android:layout_margin="@dimen/fab_margin"-->
-        <!--<android.support.design.widget.FloatingActionButton-->
 
-            <!--android:id="@+id/fab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="bottom|end"-->
-            <!--android:src="@android:drawable/ic_menu_help"-->
-            <!--app:layout_behavior="com.crakama.mmarket.FLoatinfActionButtons.FAB_Float_on_Scroll" />-->
-        <!---->
-        <!--<include layout="@layout/fab_layout" />-->
     </LinearLayout>
 </LinearLayout>
 
@@ -160,7 +128,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:src="@drawable/cellphone"
-        app:layout_behavior="com.crakama.mmarket.FloatingActionButtons.FAB_Float_on_Scroll" />
+        android:background="@color/colorAccent"
+        app:layout_behavior="com.crakama.mmarket.FloatingActionButtons.FAB_Float_on_Scroll"
+        app:theme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <include layout="@layout/fab_layout" />
 

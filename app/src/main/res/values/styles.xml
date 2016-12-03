@@ -44,7 +44,7 @@
     </style>
 
 
-    <style name="AppTheme.LoginActionbar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.LoginActionbar" parent="Theme.AppCompat.Light.DarkActionBar">
 
     </style>
 
