@@ -15,8 +15,8 @@
     </item>
     <item
         android:id="@+id/action_sale"
-        android:icon="@drawable/salegoods"
-        android:title="Sale"
+
+        android:title="Sell Item"
         app:showAsAction="always" >
     </item>
     <item android:id="@+id/action_logout" android:title="@string/action_logout"/>

@@ -126,32 +126,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         //Get the uid for the currently logged in User from intent data passed to this activity
 
-//        if(AccessToken.getCurrentAccessToken() == null) {
-//
-//        }else {
-//        String uid = getIntent().getExtras().getString("user_id");
-//        //Get the imageUrl  for the currently logged in User from intent data passed to this activity
-//        String imageUrl = getIntent().getExtras().getString("profile_picture");
-//
-//        new ImageLoadTask(imageUrl, profilePicture).execute();
-//        //Referring to the name of the User who has logged in currently and adding a valueChangeListener
-//        dbref.child(uid).child("name").addValueEventListener(new ValueEventListener() {
-//            //onDataChange is called every time the name of the User changes in your Firebase Database
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                //Inside onDataChange we can get the data as an Object from the dataSnapshot
-//                //getValue returns an Object. We can specify the type by passing the type expected as a parameter
-//                String data = dataSnapshot.getValue(String.class);
-//                name.setText("Hello " + data + ", ");
-//            }
-//
-//            //onCancelled is called in case of any error
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                Toast.makeText(getApplicationContext(), "" + databaseError.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        });
-//        }
+
     }
 
 

@@ -90,9 +90,7 @@ public class UploadImage extends AppCompatActivity {
                      * THEN SAVE
                      */
                     if(dbOperationsHelper.saveProductDetails(productModel)){
-                        /**
-                         * IF NEWS SAVED, CLEAR EDIT TEXT
-                         */
+                        /*** IF NEWS SAVED, CLEAR EDIT TEXT */
                         editTextPName.setText("");
                         editTextPprice.setText("");
                         Toast.makeText(UploadImage.this, "YOUR PRODUCT DATA HAS BEEN SAVED!!!", Toast.LENGTH_SHORT).show();

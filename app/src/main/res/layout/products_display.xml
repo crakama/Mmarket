@@ -60,12 +60,11 @@
                 android:id="@+id/productdetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:padding="10dp"
                 android:layout_toRightOf="@+id/productimage"
                 android:layout_below="@+id/producttext"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
             <TextView
                 android:id="@+id/productsellername"
                 android:layout_width="wrap_content"
@@ -74,8 +73,7 @@
                 android:padding="10dp"
                 android:layout_toRightOf="@+id/productdetails"
                 android:layout_below="@+id/producttext"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
 
@@ -83,12 +81,10 @@
                 android:id="@+id/productsellerno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:padding="10dp"
                 android:layout_toRightOf="@+id/productsellername"
                 android:layout_below="@+id/producttext"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/productprice"
@@ -98,8 +94,7 @@
                 android:text="Price"
                 android:padding="10dp"
                 android:layout_below="@+id/productlocation"
-                android:layout_toRightOf="@+id/productlocation"
-     />
+                android:layout_toRightOf="@+id/productlocation" />
 
 
             <ImageView

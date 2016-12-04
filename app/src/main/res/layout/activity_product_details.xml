@@ -105,16 +105,16 @@
             android:textIsSelectable="false"
              />
 
-        <Button
-            android:id="@+id/tvdOrder"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#777777"
-            android:gravity="center"
-            android:onClick="makeProductOrder"
-            android:text="make order"
-            android:textIsSelectable="false"
-            />
+        <!--<Button-->
+            <!--android:id="@+id/tvdOrder"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="#777777"-->
+            <!--android:gravity="center"-->
+            <!--android:onClick="makeProductOrder"-->
+            <!--android:text="make order"-->
+            <!--android:textIsSelectable="false"-->
+            <!--/>-->
 
     </LinearLayout>
 </LinearLayout>
@@ -129,6 +129,8 @@
         android:layout_gravity="bottom|end"
         android:src="@drawable/cellphone"
         android:background="@color/colorAccent"
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="normal"
         app:layout_behavior="com.crakama.mmarket.FloatingActionButtons.FAB_Float_on_Scroll"
         app:theme="@style/ThemeOverlay.AppCompat.Light"/>
 
