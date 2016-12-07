@@ -120,14 +120,14 @@ public class ProductDetails extends AppCompatActivity {
 
 
         // Get a handle to your EditTexts
-     TextView t1 = (TextView) findViewById(R.id.txdProductDesc);
+     TextView productDesc = (TextView) findViewById(R.id.txdProductDesc);
      TextView sellerDetails = (TextView) findViewById(R.id.tvdSellerName);
-     TextView t3 = (TextView) findViewById(R.id.tvdOrder);
+     //TextView t3 = (TextView) findViewById(R.id.tvdOrder);
 
         // Set height to 50% of screen size each
-        t1.setHeight(productdescHeight);
-        sellerDetails.setHeight(sellerDetailsHeight);
-        t3.setHeight(makeorder);
+        //t1.setHeight(productdescHeight);
+        //sellerDetails.setHeight(sellerDetailsHeight);
+        //t3.setHeight(makeorder);
 
         txtPname = (TextView) findViewById(R.id.tvdProductName);
         txtPprice = (TextView) findViewById(R.id.tvdProductPrice);
@@ -160,7 +160,7 @@ public class ProductDetails extends AppCompatActivity {
         txtPname.setText(name);
         txtPprice.setText(price);
         //txtPDesc.setText(desc);
-        t1.setText(desc);
+        productDesc.setText(desc);
         // txtSellerNo.setText(sellerno);
         //txtSeller.setText(sellername);
         sellerDetails.setText(sellername);
@@ -217,14 +217,25 @@ public class ProductDetails extends AppCompatActivity {
         fabsms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplication(), "Floating Action Button 2", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplication(), "Floating Action Button 2", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+
+                startActivity(intent);
             }
         });
 
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplication(), "Floating Action Button 3", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplication(), "Floating Action Button 3", Toast.LENGTH_SHORT).show();
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBodyText = "Check it out this product";
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject here");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
+                startActivity(Intent.createChooser(sharingIntent, "Shearing Option"));
+
             }
         });
 
